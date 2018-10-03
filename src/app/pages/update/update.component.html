@@ -1,0 +1,37 @@
+<!-- formulaire pour update -->
+<form *ngIf="user">
+
+  <div class="row">
+
+    <div class="col">
+        <div class="form-group">
+            <label>Nom</label>
+            <!-- ici, pour récupérer la valeur du nom dans le formaulaire, on utiliser [value], pour récupérer la modification, on utilise (onchange) -->
+            <input type="text" class="form-control" placeholder="First name" [value]="user.name" (change)="formUpdate.name = $event.target.value">
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="First name" [value]="user.username" (change)="formUpdate.username = $event.target.value">
+        </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+        <div class="form-group">
+            <label>website</label>
+            <input type="text" class="form-control" placeholder="First name" [value]="user.website" (change)="formUpdate.website = $event.target.value">
+        </div>
+    </div>
+
+  </div>
+
+  <!-- bouton de modificaton, sur l'event click, on appel la fonction updateUser qui a comme argument, le userid -->
+  <button type="button" name="button" class="btn btn-info" (click)=updateUser(user.id)>modifier</button>
+
+</form>
