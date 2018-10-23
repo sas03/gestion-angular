@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../services/users.service';
+import { ClientsService } from '../../services/clients.service';
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -9,32 +9,32 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class UpdateComponent implements OnInit {
 
-    user;
-    userId;
+    client;
+    clientId;
     formUpdate={
         name:"",
-        username:"",
-        website:""
+        address:"",
+        contact:""
     }
 
-  constructor(private usersService:UsersService,private route:ActivatedRoute) {
+  constructor(private clientsService:ClientsService,private route:ActivatedRoute) {
       this.route.params.subscribe((params) => {
-          this.userId=params['id'];
+          this.clientId=params['id'];
       })
 
-      this.usersService.getUser(this.userId).subscribe(user=>{
+      this.clientsService.getClient(this.clientId).subscribe(client=>{
 
-          this.user=user;
-          console.log(this.user);
+          this.client=client;
+          console.log(this.client);
 
       });
   }
 
   ngOnInit() {
   }
-  updateUser(id){
-      this.usersService
-      .updatedUser(this.formUpdate.name,this.formUpdate.username,this.formUpdate.website,this.userId)      
+  updateClient(id){
+      this.clientsService
+      .updatedClient(this.formUpdate.name,this.formUpdate.address,this.formUpdate.contact,this.clientId)      
   }
 
 }

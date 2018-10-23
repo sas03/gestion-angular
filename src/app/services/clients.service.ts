@@ -4,10 +4,10 @@ import { Http, Headers, Response, RequestOptions, RequestMethod } from '@angular
 import { Router } from '@angular/router';
 
 @Injectable()
-export class UsersService {
+export class ClientsService {
 
 // ApiUrl="http://localhost:4200/assets/data/data.json";
-apiUrl="http://localhost:3000/users/";
+apiUrl="http://localhost:3000/clients/";
 
 datatopost;
 
@@ -21,23 +21,23 @@ httpOptions = {
   }
 
 // get all users
-getUsers(){
+getClients(){
     return this.http.get(this.apiUrl);
 }
 
 // get one user by Id
-getUser(id){
+getClient(id){
     return this.http.get(this.apiUrl+id);
 }
 
 // create a user
-createUser(username,name,website){
+createClient(name,address,contact){
     // body envoyé dans la requête, appelé payload
     const payload =
         {
-          "name":username,
-          "username":name,
-          "website":website
+          "name":name,
+          "address":address,
+          "contact":contact
         }
 
     // conversion en jSON
@@ -55,14 +55,14 @@ createUser(username,name,website){
 }
 
 // mise à jour user
-updatedUser(username,name,website,id){
+updatedClient(name,address,contact,id){
 
     // body envoyé dans la requête, appelé payload
     const payload =
         {
-          "name":username,
-          "username":name,
-          "website":website
+          "name":name,
+          "address":address,
+          "contact":contact
         }
 
         // conversion en JSON
